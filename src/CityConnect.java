@@ -316,11 +316,11 @@ import java.util.Scanner;
 		.equalsIgnoreCase(startLocation2));
 }
 
-private static boolean isPositiveNonZeroInt(String s) {
+private static boolean isPositiveNonZeroInt(String inputString) {
 	try {
-		int i = Integer.parseInt(s);
-			//return true if i is greater than 0
-		return (i > 0 ? true : false);
+		int integerFromInputString = Integer.parseInt(inputString);
+			//return true if integerFromInputString is greater than 0
+		return (integerFromInputString > 0 ? true : false);
 	} catch (NumberFormatException nfe) {
 		return false;
 	}
