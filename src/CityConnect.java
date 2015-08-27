@@ -223,7 +223,7 @@ import java.util.Scanner;
 
 			if (existing_start_location == null) { //beginning of empty slots
 				return NOT_FOUND; 
-			} else if (sameRoute(existing_start_location, existing_end_location,
+			} else if (isSameRoute(existing_start_location, existing_end_location,
 				newStartLocation, newEndLocation)) { 
 				return i;
 			}
@@ -290,7 +290,7 @@ import java.util.Scanner;
 			String existingEndLocation = route[i][STORAGE_POSITION_END_LOCATION];
 
 			if ((existingStartLocation == null)
-				 || (sameRoute(existingStartLocation, existingEndLocation,
+				 || (isSameRoute(existingStartLocation, existingEndLocation,
 						newStartLocation, newEndLocation))){ // empty slot
 				return i;
 			}
@@ -301,7 +301,7 @@ import java.util.Scanner;
 	/**
 	 * This operation checks if two routes represents the same route.
 	 */
-	private static boolean sameRoute(String startLocation1,
+	private static boolean isSameRoute(String startLocation1,
 		String endLocation1, String startLocation2, String endLocation2) {
 
 		if ((startLocation1 == null) || (endLocation1 == null)
