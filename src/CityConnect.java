@@ -209,7 +209,6 @@ import java.util.Scanner;
 			return String.format(MESSAGE_DISTANCE, newStartLocation, newEndLocation,
 				route[position][STORAGE_POSITION_DISTANCE]);
 		}
-
 	}
 
 	/**
