@@ -330,8 +330,7 @@ private static String removeFirstWord(String userCommand) {
 }
 
 private static String getFirstWord(String userCommand) {
-	String commandTypeString = userCommand.trim().split("\\s+")[0];
-	return commandTypeString;
+	return userCommand.trim().split("\\s+")[0];
 }
 
 private static String[] splitParameters(String commandParametersString) {
