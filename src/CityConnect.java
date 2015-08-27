@@ -256,7 +256,7 @@ import java.util.Scanner;
 			return String.format(MESSAGE_INVALID_FORMAT, userCommand);
 		}
 
-		int slotPosition = location(newStartLocation, newEndLocation);
+		int slotPosition = getSuitableLocation(newStartLocation, newEndLocation);
 
 		if (slotPosition == SLOT_UNAVAILABLE){
 			return MESSAGE_NO_SPACE;
@@ -281,7 +281,7 @@ import java.util.Scanner;
 	 *   newStartLocation and newEndLocation. Returns SLOT_UNAVAILABLE if
 	 *   no suitable slot is found.
 	 */
-	private static int location(String newStartLocation,
+	private static int getSuitableLocation(String newStartLocation,
 		String newEndLocation) {
 		
 		for (int i = 0; i < route.length; i++) {
