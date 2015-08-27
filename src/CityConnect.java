@@ -33,7 +33,7 @@ import java.util.Scanner;
 
  * @author Dave Jun
  */
-public class CityConnect {
+ public class CityConnect {
 
 	/*
 	 * ==============NOTE TO STUDENTS======================================
@@ -129,15 +129,15 @@ public class CityConnect {
 		COMMAND_TYPE commandType = determineCommandType(commandTypeString);
 
 		switch (commandType) {
-		case ADD_ROUTE:
+			case ADD_ROUTE:
 			return addRoute(userCommand);
-		case GET_DISTANCE:
+			case GET_DISTANCE:
 			return getDistance(userCommand);
-		case INVALID:
+			case INVALID:
 			return String.format(MESSAGE_INVALID_FORMAT, userCommand);
-		case EXIT:
+			case EXIT:
 			System.exit(0);
-		default:
+			default:
 			//throw an error if the command is not recognized
 			throw new Error("Unrecognized command type");
 		}
@@ -174,7 +174,7 @@ public class CityConnect {
 		} else if (commandTypeString.equalsIgnoreCase("getdistance")) {
 			return COMMAND_TYPE.GET_DISTANCE;
 		} else if (commandTypeString.equalsIgnoreCase("exit")) {
-		 	return COMMAND_TYPE.EXIT;
+			return COMMAND_TYPE.EXIT;
 		} else {
 			return COMMAND_TYPE.INVALID;
 		}
@@ -202,12 +202,12 @@ public class CityConnect {
 
 		if (position == NOT_FOUND) {
 			return String.format(MESSAGE_NO_ROUTE, newStartLocation,
-					newEndLocation);
+				newEndLocation);
 		} 
 		else 
 		{
 			return String.format(MESSAGE_DISTANCE, newStartLocation, newEndLocation,
-					route[position][STORAGE_POSITION_DISTANCE]);
+				route[position][STORAGE_POSITION_DISTANCE]);
 		}
 
 	}
@@ -217,7 +217,7 @@ public class CityConnect {
 	 *    newStartLocation and newEndLocation. Returns NOT_FOUND if not found.
 	 */
 	private static int  getPositionOfExistingRoute(String newStartLocation,
-			String newEndLocation) {
+		String newEndLocation) {
 		for (int i = 0; i < route.length; i++) {
 
 			String existing_start_location = route[i][STORAGE_POSITION_START_LOCATION];
@@ -226,7 +226,7 @@ public class CityConnect {
 			if (existing_start_location == null) { //beginning of empty slots
 				return NOT_FOUND; 
 			} else if (sameRoute(existing_start_location, existing_end_location,
-					newStartLocation, newEndLocation)) { 
+				newStartLocation, newEndLocation)) { 
 				return i;
 			}
 		}
@@ -265,14 +265,14 @@ public class CityConnect {
 		}
 
 		addRouteAtPosition(newStartLocation, newEndLocation, distance,
-				slotPosition);
+			slotPosition);
 
 		return String.format(MESSAGE_ADDED, newStartLocation, newEndLocation,
-				distance);
+			distance);
 	}
 
 	private static void addRouteAtPosition(String newStartLocation,
-			String newEndLocation, String distance, int entryPosition) {
+		String newEndLocation, String distance, int entryPosition) {
 		route[entryPosition][STORAGE_POSITION_START_LOCATION] = newStartLocation;
 		route[entryPosition][STORAGE_POSITION_END_LOCATION] = newEndLocation;
 		route[entryPosition][STORAGE_POSITION_DISTANCE] = distance;
@@ -284,7 +284,7 @@ public class CityConnect {
 	 *   no suitable slot is found.
 	 */
 	private static int location(String newStartLocation,
-			String newEndLocation) {
+		String newEndLocation) {
 		
 		for (int i = 0; i < route.length; i++) {
 
@@ -294,7 +294,7 @@ public class CityConnect {
 			if (existingStartLocation == null) { // empty slot
 				return i;
 			} else if (sameRoute(existingStartLocation, existingEndLocation,
-					newStartLocation, newEndLocation)) {
+				newStartLocation, newEndLocation)) {
 				return i;
 			}
 		}
@@ -305,40 +305,40 @@ public class CityConnect {
 	 * This operation checks if two routes represents the same route.
 	 */
 	private static boolean sameRoute(String startLocation1,
-			String endLocation1, String startLocation2, String endLocation2) {
+		String endLocation1, String startLocation2, String endLocation2) {
 
 		if ((startLocation1 == null) || (endLocation1 == null)
-				&& (startLocation2 == null) || (endLocation2 == null)){
+			&& (startLocation2 == null) || (endLocation2 == null)){
 			throw new Error("Route end points cannot be null");
-		}
-
-		return (startLocation1.equalsIgnoreCase(startLocation2) && endLocation1
-				.equalsIgnoreCase(endLocation2))
-				|| (startLocation1.equalsIgnoreCase(endLocation2) && endLocation1
-						.equalsIgnoreCase(startLocation2));
 	}
 
-	private static boolean isPositiveNonZeroInt(String s) {
-		try {
-			int i = Integer.parseInt(s);
+	return (startLocation1.equalsIgnoreCase(startLocation2) && endLocation1
+		.equalsIgnoreCase(endLocation2))
+	|| (startLocation1.equalsIgnoreCase(endLocation2) && endLocation1
+		.equalsIgnoreCase(startLocation2));
+}
+
+private static boolean isPositiveNonZeroInt(String s) {
+	try {
+		int i = Integer.parseInt(s);
 			//return true if i is greater than 0
-			return (i > 0 ? true : false);
-		} catch (NumberFormatException nfe) {
-			return false;
-		}
+		return (i > 0 ? true : false);
+	} catch (NumberFormatException nfe) {
+		return false;
 	}
+}
 
-	private static String removeFirstWord(String userCommand) {
-		return userCommand.replace(getFirstWord(userCommand), "").trim();
-	}
+private static String removeFirstWord(String userCommand) {
+	return userCommand.replace(getFirstWord(userCommand), "").trim();
+}
 
-	private static String getFirstWord(String userCommand) {
-		String commandTypeString = userCommand.trim().split("\\s+")[0];
-		return commandTypeString;
-	}
+private static String getFirstWord(String userCommand) {
+	String commandTypeString = userCommand.trim().split("\\s+")[0];
+	return commandTypeString;
+}
 
-	private static String[] splitParameters(String commandParametersString) {
-		String[] parameters = commandParametersString.trim().split("\\s+");
-		return parameters;
-	}
+private static String[] splitParameters(String commandParametersString) {
+	String[] parameters = commandParametersString.trim().split("\\s+");
+	return parameters;
+}
 }
