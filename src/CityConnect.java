@@ -290,10 +290,9 @@ import java.util.Scanner;
 			String existingStartLocation = route[i][STORAGE_POSITION_START_LOCATION];
 			String existingEndLocation = route[i][STORAGE_POSITION_END_LOCATION];
 
-			if (existingStartLocation == null) { // empty slot
-				return i;
-			} else if (sameRoute(existingStartLocation, existingEndLocation,
-				newStartLocation, newEndLocation)) {
+			if ((existingStartLocation == null)
+			||  (sameRoute(existingStartLocation, existingEndLocation,
+				newStartLocation, newEndLocation)){ // empty slot
 				return i;
 			}
 		}
