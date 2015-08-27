@@ -54,7 +54,7 @@ import java.util.Scanner;
 	// These are the possible command types
 	enum COMMAND_TYPE {
 		ADD_ROUTE, GET_DISTANCE, INVALID, EXIT
-	};
+	};	
 
 	// This is used to indicate there is no suitable slot to store route
 	private static final int SLOT_UNAVAILABLE = -1;
@@ -205,8 +205,7 @@ import java.util.Scanner;
 			return String.format(MESSAGE_NO_ROUTE, newStartLocation,
 				newEndLocation);
 		} 
-		else 
-		{
+		else {
 			return String.format(MESSAGE_DISTANCE, newStartLocation, newEndLocation,
 				route[position][STORAGE_POSITION_DISTANCE]);
 		}
