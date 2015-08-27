@@ -202,7 +202,7 @@ import java.util.Scanner;
 
 		if (position == NOT_FOUND) {
 			return String.format(MESSAGE_NO_ROUTE, newStartLocation,
-				newEndLocation);
+								 newEndLocation);
 		} 
 		else {
 			return String.format(MESSAGE_DISTANCE, newStartLocation, newEndLocation,
