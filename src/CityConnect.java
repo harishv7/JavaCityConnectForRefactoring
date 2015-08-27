@@ -334,7 +334,6 @@ private static String getFirstWord(String userCommand) {
 }
 
 private static String[] splitParameters(String commandParametersString) {
-	String[] parameters = commandParametersString.trim().split("\\s+");
-	return parameters;
+	return commandParametersString.trim().split("\\s+");
 }
 }
